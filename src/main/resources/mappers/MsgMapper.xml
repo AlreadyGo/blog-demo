@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.mine.mapper.MsgMapper">
+    <select id="listAllMsgs"  parameterType="Integer" resultType="msg">
+        SELECT * from msg
+        <if test="size!=null">
+            limit #{size}
+        </if>
+    </select>
+    <insert id="insertMsg" parameterType="msg">
+        INSERT INTO msg VALUES (
+          #{name},
+          #{content},
+          now(),
+          NULL
+        )
+    </insert>
+</mapper>
