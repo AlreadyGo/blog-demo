@@ -19,6 +19,7 @@
     <mvc:resources location="/images/" mapping="/images/**"/>
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/fonts/" mapping="/fonts/**"/>
+    <mvc:default-servlet-handler />
 
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">

@@ -1,6 +1,7 @@
 package demo.mine.controller;
 
 import demo.mine.pojo.Msg;
+import demo.mine.pojo.RespInfo;
 import demo.mine.service.MsgService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,8 +30,8 @@ public class IndexController {
 
     @RequestMapping("/saveMsg")
     @ResponseBody
-    public Object saveMsg(Msg msg){
+    public RespInfo saveMsg(Msg msg){
         msgService.insertMsg(msg);
-        return null;
+        return new RespInfo(0,"保存成功");
     }
 }
