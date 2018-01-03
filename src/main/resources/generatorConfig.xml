@@ -30,10 +30,9 @@
             2，MyBatis3Simple：类似MyBatis3，只是不生成XXXBySample；
         introspectedColumnImpl：类全限定名，用于扩展MBG
     -->
-    <classPathEntry location="C:\Users\dell\.m2\repository\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar"/>
+    <classPathEntry location="C:\Users\Already\.m2\repository\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar"/>
 
     <context id="mysql"  targetRuntime="MyBatis3Simple" >
-
         <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
             一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖
          -->
@@ -48,7 +47,11 @@
         <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
+        <commentGenerator>
 
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
         <!-- 必须要有的，使用这个配置链接数据库
             @TODO:是否可以扩展
          -->
@@ -171,7 +174,7 @@
 
             注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
          -->
-        <table tableName="msg_copy" domainObjectName="Msg2">
+        <table tableName="msg" domainObjectName="Msg2">
 
             <!-- 参考 javaModelGenerator 的 constructorBased属性-->
             <property name="constructorBased" value="false"/>
@@ -208,10 +211,10 @@
             <!-- 注意，该属性只针对MyBatis3Simple有用；
                 如果选择的runtime是MyBatis3Simple，那么会生成一个SelectAll方法，如果指定了selectAllOrderByClause，那么会在该SQL中添加指定的这个order条件；
              -->
-            <property name="selectAllOrderByClause" value="id desc"/>
+            <!--<property name="selectAllOrderByClause" value="id desc"/>-->
 
             <!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate -->
-            <property name="useActualColumnNames" value="false"/>
+            <property name="useActualColumnNames" value="true"/>
 
 
             <!-- generatedKey用于生成生成主键的方法，
@@ -278,8 +281,8 @@
                 注意，一个table元素中可以有多个ignoreColumn元素
             <ignoreColumn column="deptId" delimitedColumnName=""/>
             -->
-        </table>
 
+        </table>
     </context>
 
 </generatorConfiguration>
